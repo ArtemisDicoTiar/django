@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>{{message}}</h1>
+        <h4>
+            <br>Name : {{ name }}
+            <br>Type : {{ vip.key }}
+        </h4>
+        <h5>
+            {% if count > 0 %}
+                Data Count = {{ count }}
+            {% else %}
+                No Data
+            {% endif %}
+
+            {% for item in dataList %}
+              <li>{{ item.name }}</li>
+            {% endfor %}
+
+            {% csrf_token %}
+        </h5>
+        <h1>
+            {{ createDate|date:"Y-m-d" }} <br>
+            {{ lastName|lower }}
+        </h1>
+        {% comment %}
+          <div>
+              <p>
+                  불필요한 블럭
+              </p>
+              <span></span>
+          </div>
+        {% endcomment %}
+        <header>
+            # autoescape 태그<br>
+            {% autoescape on %}
+                {{ content }}
+            {% endautoescape %}
+            <br>
+            # escape 필터<br>
+            {{ content|escape }}
+        </header>
+    </body>
